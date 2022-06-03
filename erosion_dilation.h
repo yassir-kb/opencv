@@ -5,8 +5,8 @@ void ErosionProcess(int, void *);
 
 void DilationProcess(int, void *);
 
-void Dilation(int, QString);
+void Dilation(QString path);
 
-void Erosion(int, QString);
+void Erosion(QString path);
 
 #endif //PROJECT_EROSION_DILATION_H

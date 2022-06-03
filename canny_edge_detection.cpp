@@ -1,10 +1,11 @@
 #include "opencv2/imgproc.hpp"
 #include "opencv2/highgui.hpp"
 #include <iostream>
+#include <QString>
 #include "canny_edge_detection.h"
 
 using namespace cv;
-Mat src1, src_gray;
+Mat src4, src_gray;
 Mat dst, detected_edges;
 int lowThreshold = 0;
 const int max_lowThreshold = 100;
@@ -12,28 +13,28 @@ const int ratio = 3;
 const int kernel_size = 3;
 const char *window_name = "Edge Map";
 
-static void CannyThreshold(int, void *) {
+static void CannyThresholdProcess(int, void *) {
     blur(src_gray, detected_edges, Size(3, 3));
     Canny(detected_edges, detected_edges, lowThreshold, lowThreshold * ratio, kernel_size);
     dst = Scalar::all(0);
-    src1.copyTo(dst, detected_edges);
+    src4.copyTo(dst, detected_edges);
     imshow(window_name, dst);
 }
 
 
-int Canny_edge_detection(int argc, char **argv) {
-    CommandLineParser parser(argc, argv,
-                             "{@input | image.jpg | input image}");
-    src1 = imread(samples::findFile(parser.get<String>("@input")), IMREAD_COLOR); // Load an image
-    if (src1.empty()) {
+void CannyThreshold(QString path) {
+
+    src4 = imread(samples::findFile(path.toStdString(), IMREAD_COLOR));
+    if (src4.empty()) {
         std::cout << "Could not open or find the image!\n" << std::endl;
-        std::cout << "Usage: " << argv[0] << " <Input image>" << std::endl;
-        return -1;
+        std::cout << "Usage: " << src4 << " <Input image>" << std::endl;
     }
-    dst.create(src1.size(), src1.type());
-    cvtColor(src1, src_gray, COLOR_BGR2GRAY);
+    dst.create(src4.size(), src4.type());
+    cvtColor(src4, src_gray, COLOR_BGR2GRAY);
     namedWindow(window_name, WINDOW_AUTOSIZE);
-    createTrackbar("Min Threshold:", window_name, &lowThreshold, max_lowThreshold, CannyThreshold);
-    CannyThreshold(0, 0);
+    createTrackbar("Min Threshold:", window_name, &lowThreshold, max_lowThreshold, CannyThresholdProcess);
+    CannyThresholdProcess(0, 0);
     waitKey(0);
+
+    destroyAllWindows();
 }

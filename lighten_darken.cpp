@@ -1,6 +1,7 @@
 #include "opencv2/imgcodecs.hpp"
 #include "opencv2/highgui.hpp"
 #include <iostream>
+#include <QString>
 #include "lighten_darken.h"
 
 using std::cin;
@@ -8,29 +9,32 @@ using std::cout;
 using std::endl;
 using namespace cv;
 
+Mat image;
+Mat new_image;
+int alpha;
+int beta;
+int const max_element = 3;
+int const max_kernel_size = 100;
 
-int Lighten_darken(int argc, char **argv) {
-    CommandLineParser parser(argc, argv,
-                             "{@input | /Users/yasserroot/Documents/ISEP/C++/Project/cmake-build-debug/morphology.png | input image}");
-    Mat image = imread(samples::findFile(parser.get<String>("@input")));
+void LightenDarken(QString path) {
+    image = imread(samples::findFile(path.toStdString(), IMREAD_COLOR));
     if (image.empty()) {
         cout << "Could not open or find the image!\n" << endl;
-        cout << "Usage: " << argv[0] << " <Input image>" << endl;
-        return -1;
+        cout << "Usage: " << image << " <Input image>" << endl;
     }
-    Mat new_image = Mat::zeros(image.size(), image.type());
-    double alpha = 1.0;
-//< Simple contrast control
+    new_image = Mat::zeros(image.size(), image.type());
+    namedWindow("Lighten Darken Demo", WINDOW_AUTOSIZE);
+    moveWindow("Lighten Darken Demo", new_image.cols, 0);
+    createTrackbar("Light or Dark :", "Lighten Darken Demo",
+                   &alpha, max_element, LightenDarkenProcess);
+    createTrackbar("Lightness degree :", "Lighten Darken Demo",
+                   &beta, max_kernel_size, LightenDarkenProcess);
+    LightenDarkenProcess(1.0, 0);
+    waitKey(0);
+}
 
-    int beta = 0;
-//< Simple brightness control
+void LightenDarkenProcess(int, void *) {
 
-    cout << " Basic Linear Transforms " << endl;
-    cout << "-------------------------" << endl;
-    cout << "* Enter the alpha value [1.0-3.0]: ";
-    cin >> alpha;
-    cout << "* Enter the beta value [0-100]: ";
-    cin >> beta;
     for (int y = 0; y < image.rows; y++) {
         for (int x = 0; x < image.cols; x++) {
             for (int c = 0; c < image.channels(); c++) {
@@ -39,7 +43,8 @@ int Lighten_darken(int argc, char **argv) {
             }
         }
     }
-    imshow("Original Image", image);
-    imshow("New Image", new_image);
+    imshow("Lighten Darken Demo", new_image);
     waitKey();
+
+    destroyAllWindows();
 }

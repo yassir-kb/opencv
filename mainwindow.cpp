@@ -3,6 +3,8 @@
 #include "erosion_dilation.h"
 #include "resizing.h"
 #include "panorama_stitching.h"
+#include "lighten_darken.h"
+#include "canny_edge_detection.h"
 #include <QFileDialog>
 #include <QMessageBox>
 #include <QFile>
@@ -39,13 +41,13 @@ MainWindow::~MainWindow() { // Destroyer
 
 void MainWindow::buttonDilatationClick() {
     for (int i = 0; i < fileNames.length(); i++) {
-        Dilation(5, fileNames[i]);
+        Dilation(fileNames[i]);
     }
 }
 
 void MainWindow::buttonErosionClick() {
     for (int i = 0; i < fileNames.length(); i++) {
-        Erosion(5, fileNames[i]);
+        Erosion(fileNames[i]);
     }
 }
 
@@ -57,7 +59,9 @@ void MainWindow::buttonResizingClick() {
 }
 
 void MainWindow::buttonLightenDarkenClick() {
-
+    for (int i = 0; i < fileNames.length(); i++) {
+        LightenDarken(fileNames[i]);
+    }
 }
 
 void MainWindow::buttonPaStiClick() {
@@ -65,7 +69,9 @@ void MainWindow::buttonPaStiClick() {
 }
 
 void MainWindow::buttonCaEdgeClick() {
-
+    for (int i = 0; i < fileNames.length(); i++) {
+        CannyThreshold(fileNames[i]);
+    }
 }
 
 void MainWindow::on_pushButton_clicked() {
