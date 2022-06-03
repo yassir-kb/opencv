@@ -1,0 +1,6 @@
+#ifndef PROJECT_LIGHTEN_DARKEN_H
+#define PROJECT_LIGHTEN_DARKEN_H
+
+int Lighten_darken();
+
+#endif //PROJECT_LIGHTEN_DARKEN_H

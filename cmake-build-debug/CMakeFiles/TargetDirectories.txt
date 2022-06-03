@@ -1,0 +1,5 @@
+/Users/yasserroot/Documents/ISEP/C++/OpenCV/cmake-build-debug/CMakeFiles/OpenCV.dir
+/Users/yasserroot/Documents/ISEP/C++/OpenCV/cmake-build-debug/CMakeFiles/edit_cache.dir
+/Users/yasserroot/Documents/ISEP/C++/OpenCV/cmake-build-debug/CMakeFiles/rebuild_cache.dir
+/Users/yasserroot/Documents/ISEP/C++/OpenCV/cmake-build-debug/CMakeFiles/OpenCV_autogen_timestamp_deps.dir
+/Users/yasserroot/Documents/ISEP/C++/OpenCV/cmake-build-debug/CMakeFiles/OpenCV_autogen.dir

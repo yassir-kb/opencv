@@ -1,0 +1,78 @@
+{
+	"configurations" : 
+	[
+		{
+			"directories" : 
+			[
+				{
+					"build" : ".",
+					"jsonFile" : "directory-.-Debug-f5ebdc15457944623624.json",
+					"minimumCMakeVersion" : 
+					{
+						"string" : "3.22"
+					},
+					"projectIndex" : 0,
+					"source" : ".",
+					"targetIndexes" : 
+					[
+						0,
+						1,
+						2
+					]
+				}
+			],
+			"name" : "Debug",
+			"projects" : 
+			[
+				{
+					"directoryIndexes" : 
+					[
+						0
+					],
+					"name" : "OpenCV",
+					"targetIndexes" : 
+					[
+						0,
+						1,
+						2
+					]
+				}
+			],
+			"targets" : 
+			[
+				{
+					"directoryIndex" : 0,
+					"id" : "OpenCV::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-OpenCV-Debug-6c13d056c4c7b06d5359.json",
+					"name" : "OpenCV",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 0,
+					"id" : "OpenCV_autogen::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-OpenCV_autogen-Debug-4b7bf330c69135bbb8b5.json",
+					"name" : "OpenCV_autogen",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 0,
+					"id" : "OpenCV_autogen_timestamp_deps::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-OpenCV_autogen_timestamp_deps-Debug-5c741dc5d8c0300a54a1.json",
+					"name" : "OpenCV_autogen_timestamp_deps",
+					"projectIndex" : 0
+				}
+			]
+		}
+	],
+	"kind" : "codemodel",
+	"paths" : 
+	{
+		"build" : "/Users/yasserroot/Documents/ISEP/C++/OpenCV/cmake-build-debug",
+		"source" : "/Users/yasserroot/Documents/ISEP/C++/OpenCV"
+	},
+	"version" : 
+	{
+		"major" : 2,
+		"minor" : 3
+	}
+}
